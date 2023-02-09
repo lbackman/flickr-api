@@ -1,2 +1,10 @@
-<h1>StaticPages#index</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
+<h1>Search Flickr images</h1>
+<% @photos.each do |photo| %>
+  <div class="image">
+    <%= image_tag "#{Flickr.url(photo)}" %>
+  </div>
+<% end %>
+
+<% if @photos.size.zero? %>
+  <p class="empty">No public photos for that id</p>
+<% end %>
