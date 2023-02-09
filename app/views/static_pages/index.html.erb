@@ -1,10 +1,25 @@
 <h1>Search Flickr images</h1>
-<% @photos.each do |photo| %>
-  <div class="image">
-    <%= image_tag photo %>
-  </div>
+
+<%= form_with url: "/", method: :get do |form| %>
+  <%= form.label :user_id, "Search for Flickr user id:" %>
+  <%= form.text_field :user_id %>
+  <%= form.submit "Search" %>
 <% end %>
 
-<% if @photos.size.zero? %>
-  <p class="empty">No public photos for that id</p>
+<% if @photos %>
+  <% if @photos.size.zero? %>
+    <p class="empty">No public photos for that id</p>
+  <% else %>
+    <p class=success>Photos for Flickr id <%= @user_id %></p>
+  <% end %>
+
+  <% @photos.each do |photo| %>
+    <div class="image">
+      <%= image_tag photo %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @error %>
+  <p class="error"><%= @error %></p>
 <% end %>
