@@ -1,7 +1,7 @@
 <h1>Search Flickr images</h1>
 <% @photos.each do |photo| %>
   <div class="image">
-    <%= image_tag "#{Flickr.url(photo)}" %>
+    <%= image_tag photo %>
   </div>
 <% end %>
 
