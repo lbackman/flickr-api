@@ -8,18 +8,20 @@
 
 <% if @photos %>
   <% if @photos.size.zero? %>
-    <p class="empty">No public photos for that id</p>
+    <h4 class="mt-3">No public photos for that id</h4>
   <% else %>
-    <p class=success>Photos for Flickr id <%= @user_id %></p>
+    <h4 class="mt-3">Photos from Flickr id <%= @user_id %></h4>
   <% end %>
 
-  <% @photos.each do |photo| %>
-    <div class="image">
-      <%= image_tag photo %>
-    </div>
-  <% end %>
+  <div class="photos d-flex flex-column align-items-center">
+    <% @photos.each do |photo| %>
+      <div class="image mb-3">
+        <%= image_tag photo %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <% if @error %>
-  <p class="error"><%= @error %></p>
+  <p class="text-warning"><%= @error %></p>
 <% end %>
